@@ -5,8 +5,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"net/url"
+	"regexp"
 	"sort"
-	"strings"
 	"sync"
 
 	"github.com/evanw/esbuild/pkg/api"
@@ -15,7 +15,13 @@ import (
 const (
 	pluginName = "k6"
 	builtin    = "k6"
+
+	filterSuffix    = "(\\?[^#]*)?(#.*)?$"
+	filterBuiltin   = "^k6(/.*)?" + filterSuffix
+	filterExtension = "^(@[a-zA-Z0-9-_]+/)?xk6-([a-zA-Z0-9-_]+)((/[a-zA-Z0-9-_]+)*)" + filterSuffix
 )
+
+var reExtension = regexp.MustCompile(filterExtension)
 
 // Metadata holds k6 related metadata, emitted under "k6" key of Metafile.
 type Metadata struct {
@@ -70,7 +76,8 @@ func (plugin *plugin) setup(build api.PluginBuild) {
 	plugin.options = build.InitialOptions
 	setOptions(plugin.options)
 
-	build.OnResolve(api.OnResolveOptions{Filter: "^(k6(/.*)?|xk6-([a-zA-Z0-9-_]+))(\\?[^#]*)?(#.*)?$"}, plugin.onResolve)
+	build.OnResolve(api.OnResolveOptions{Filter: filterBuiltin}, plugin.onResolve)
+	build.OnResolve(api.OnResolveOptions{Filter: filterExtension}, plugin.onResolveExtension)
 	build.OnEnd(plugin.onEnd)
 }
 
@@ -86,20 +93,29 @@ func trimImportPath(ipath string) string {
 	return loc.String()
 }
 
+func (plugin *plugin) addImport(value string) {
+	if !plugin.options.Metafile {
+		return
+	}
+
+	plugin.mu.Lock()
+	plugin.imports[value] = struct{}{}
+	plugin.mu.Unlock()
+}
+
+func (plugin *plugin) onResolveExtension(args api.OnResolveArgs) (api.OnResolveResult, error) {
+	plugin.addImport(args.Path)
+
+	subs := reExtension.FindSubmatch([]byte(args.Path))
+	rewrite := "k6/x/" + string(subs[2]) + string(subs[3]) + string(subs[5])
+
+	res := plugin.resolve(rewrite, api.ResolveOptions{Kind: args.Kind})
+
+	return api.OnResolveResult{Errors: res.Errors, External: res.External, Path: res.Path}, nil
+}
+
 func (plugin *plugin) onResolve(args api.OnResolveArgs) (api.OnResolveResult, error) {
-	if strings.HasPrefix(args.Path, "xk6-") {
-		rewrite := "k6/x/" + strings.TrimPrefix(args.Path, "xk6-")
-
-		res := plugin.resolve(rewrite, api.ResolveOptions{Kind: args.Kind})
-
-		return api.OnResolveResult{Errors: res.Errors, External: res.External, Path: res.Path}, nil
-	}
-
-	if plugin.options.Metafile {
-		plugin.mu.Lock()
-		plugin.imports[args.Path] = struct{}{}
-		plugin.mu.Unlock()
-	}
+	plugin.addImport(args.Path)
 
 	return api.OnResolveResult{External: true, Path: trimImportPath(args.Path)}, nil
 }

@@ -38,9 +38,13 @@ func Test_plugin_metafile(t *testing.T) {
 	}{
 		{name: "single_k6", location: "k6", imports: []string{"k6"}},
 		{name: "extension", location: "k6/x/foo", imports: []string{"k6/x/foo"}},
-		{name: "extension_with_prefix", location: "xk6-foo", imports: []string{"k6/x/foo"}},
+		{name: "extension_with_prefix", location: "xk6-foo", imports: []string{"k6/x/foo", "xk6-foo"}},
 		{name: "extension_with_query", location: "k6/x/foo?answer=42", imports: []string{"k6/x/foo?answer=42"}},
 		{name: "extension_with_hash", location: "k6/x/foo#bar", imports: []string{"k6/x/foo#bar"}},
+		{name: "extension_with_scope", location: "@john/xk6-foo", imports: []string{"@john/xk6-foo", "k6/x/foo"}},
+		{name: "extension_with_scope_and_query", location: "@john/xk6-foo?answer=42", imports: []string{"@john/xk6-foo?answer=42", "k6/x/foo?answer=42"}},
+		{name: "extension_with_scope_and_path_and_query", location: "@john/xk6-foo/sub1?answer=42", imports: []string{"@john/xk6-foo/sub1?answer=42", "k6/x/foo/sub1?answer=42"}},
+		{name: "extension_with_scope_and_paths_and_query", location: "@john/xk6-foo/sub1/sub2?answer=42", imports: []string{"@john/xk6-foo/sub1/sub2?answer=42", "k6/x/foo/sub1/sub2?answer=42"}},
 		// error
 		{name: "invalid_import", location: ":%4!?", wantErr: true},
 	}
