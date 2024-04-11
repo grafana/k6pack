@@ -59,7 +59,7 @@ func setOptions(opts *api.BuildOptions) {
 	}
 
 	if opts.Target == api.DefaultTarget {
-		opts.Target = api.ES2015
+		opts.Target = api.ES2017
 	}
 
 	if opts.Format == api.FormatDefault {
