@@ -19,7 +19,7 @@ func Test_options_setDefaults(t *testing.T) {
 	require.False(t, opts.Minify)
 	require.False(t, opts.TypeScript)
 	require.Nil(t, opts.Externals)
-	require.Equal(t, ".", opts.Directory)
+	require.Equal(t, "", opts.Directory)
 	require.Empty(t, opts.Filename)
 	require.Zero(t, opts.Timeout)
 	require.Equal(t, api.LoaderJS, opts.loaderType())
@@ -29,7 +29,7 @@ func Test_options_setDefaults(t *testing.T) {
 	opts.Directory = ""
 
 	opts.setDefaults()
-	require.Equal(t, "foo", opts.Directory)
+	require.Equal(t, "", opts.Directory)
 	require.True(t, opts.TypeScript)
 	require.Equal(t, api.LoaderTS, opts.loaderType())
 
@@ -49,7 +49,7 @@ func Test_options_stdinOptions(t *testing.T) {
 	require.Equal(t, &api.StdinOptions{
 		Contents:   "Hello, World!",
 		ResolveDir: "foo",
-		Sourcefile: filepath.Join("foo", "bar.ts"),
+		Sourcefile: "bar.ts",
 		Loader:     api.LoaderTS,
 	}, stdinopts)
 }

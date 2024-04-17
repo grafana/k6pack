@@ -19,10 +19,6 @@ type Options struct {
 }
 
 func (o *Options) setDefaults() *Options {
-	if len(o.Directory) == 0 {
-		o.Directory = filepath.Dir(o.Filename)
-	}
-
 	if !o.TypeScript {
 		o.TypeScript = filepath.Ext(o.Filename) == ".ts"
 	}
@@ -47,10 +43,16 @@ func (o *Options) sourceMapType() api.SourceMap {
 }
 
 func (o *Options) stdinOptions(contents string) *api.StdinOptions {
+	dir := filepath.Dir(o.Filename)
+	base := filepath.Base(o.Filename)
+	if base == "." { // empty filename = stdin
+		base = ""
+	}
+
 	return &api.StdinOptions{
 		Contents:   contents,
-		Sourcefile: o.Filename,
+		Sourcefile: base,
 		Loader:     o.loaderType(),
-		ResolveDir: o.Directory,
+		ResolveDir: dir,
 	}
 }
