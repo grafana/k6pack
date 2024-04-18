@@ -89,11 +89,16 @@ Flags:
   -h, --help                   help for k6pack
       --minify                 minify the output
   -o, --output string          write output to file (default stdout)
+      --source-root string     sets the sourceRoot field in generated source maps
       --sourcemap              emit the source map with an inline data URL
       --timeout duration       HTTP timeout for remote modules (default 30s)
       --typescript             force TypeScript loader
   -v, --version                version for k6pack
 ```
+
+**sourcemap**
+
+If sourcemap is enabled, by default, the current directory will be set in the sourcemap as the source root directory. This can be changed by using the `--source-root` flag. You can even disable the source root setting by specifying the empty string.
 
 ## How It Works
 
