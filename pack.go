@@ -21,6 +21,7 @@ func pack(source string, opts *Options) ([]byte, error) {
 		MinifySyntax:      opts.Minify,
 		LogLevel:          api.LogLevelSilent,
 		Sourcemap:         opts.sourceMapType(),
+		SourceRoot:        opts.SourceRoot,
 		Plugins:           []api.Plugin{http.New(), k6.New()},
 		External:          opts.Externals,
 	})

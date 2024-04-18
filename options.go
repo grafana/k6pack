@@ -16,6 +16,7 @@ type Options struct {
 	Minify     bool
 	TypeScript bool
 	Externals  []string
+	SourceRoot string
 }
 
 func (o *Options) setDefaults() *Options {
