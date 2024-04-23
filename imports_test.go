@@ -3,8 +3,8 @@ package k6pack_test
 import (
 	"testing"
 
+	"github.com/grafana/k6pack"
 	"github.com/stretchr/testify/require"
-	"github.com/szkiba/k6pack"
 )
 
 func Test_Imports(t *testing.T) {

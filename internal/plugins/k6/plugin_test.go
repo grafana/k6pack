@@ -9,8 +9,8 @@ import (
 	"testing"
 
 	"github.com/evanw/esbuild/pkg/api"
+	"github.com/grafana/k6pack/internal/plugins/k6"
 	"github.com/stretchr/testify/require"
-	"github.com/szkiba/k6pack/internal/plugins/k6"
 )
 
 func Test_plugin_add_k6_to_external(t *testing.T) {

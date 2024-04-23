@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/evanw/esbuild/pkg/api"
-	"github.com/szkiba/k6pack"
+	"github.com/grafana/k6pack"
 	"golang.org/x/term"
 )
 

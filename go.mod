@@ -1,4 +1,4 @@
-module github.com/szkiba/k6pack
+module github.com/grafana/k6pack
 
 go 1.20
 

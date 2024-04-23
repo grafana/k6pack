@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/grafana/k6pack/internal/cli"
 	"github.com/stretchr/testify/require"
-	"github.com/szkiba/k6pack/internal/cli"
 )
 
 func Test_New_stdout(t *testing.T) {

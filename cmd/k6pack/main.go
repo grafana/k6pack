@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
+	"github.com/grafana/k6pack/internal/cli"
 	"github.com/spf13/cobra"
-	"github.com/szkiba/k6pack/internal/cli"
 )
 
 //nolint:gochecknoglobals
