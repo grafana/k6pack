@@ -39,7 +39,7 @@ jobs:
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: szkiba/k6pack
+          slug: grafana/k6pack
 
       - name: Generate Go Report Card
         if: ${{ matrix.platform == 'ubuntu-latest' && github.ref_name == 'master' }}

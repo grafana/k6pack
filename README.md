@@ -1,8 +1,8 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/grafana/k6pack.svg)](https://pkg.go.dev/github.com/grafana/k6pack)
-[![GitHub Release](https://img.shields.io/github/v/release/szkiba/k6pack)](https://github.com/grafana/k6pack/releases/)
+[![GitHub Release](https://img.shields.io/github/v/release/grafana/k6pack)](https://github.com/grafana/k6pack/releases/)
 [![Go Report Card](https://goreportcard.com/badge/github.com/grafana/k6pack)](https://goreportcard.com/report/github.com/grafana/k6pack)
 [![GitHub Actions](https://github.com/grafana/k6pack/actions/workflows/test.yml/badge.svg)](https://github.com/grafana/k6pack/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/grafana/k6pack/graph/badge.svg?token=krmjUlDGM5)](https://codecov.io/gh/szkiba/k6pack)
+[![codecov](https://codecov.io/gh/grafana/k6pack/graph/badge.svg?token=krmjUlDGM5)](https://codecov.io/gh/grafana/k6pack)
 ![GitHub Downloads](https://img.shields.io/github/downloads/grafana/k6pack/total)
 
 # k6pack
