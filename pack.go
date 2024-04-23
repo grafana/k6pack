@@ -3,8 +3,8 @@ package k6pack
 
 import (
 	"github.com/evanw/esbuild/pkg/api"
-	"github.com/szkiba/k6pack/internal/plugins/http"
-	"github.com/szkiba/k6pack/internal/plugins/k6"
+	"github.com/grafana/k6pack/internal/plugins/http"
+	"github.com/grafana/k6pack/internal/plugins/k6"
 )
 
 // Pack transforms TypeScript/JavaScript sources into single k6 compatible JavaScript test script.

@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	"github.com/evanw/esbuild/pkg/api"
+	phttp "github.com/grafana/k6pack/internal/plugins/http"
 	"github.com/stretchr/testify/require"
-	phttp "github.com/szkiba/k6pack/internal/plugins/http"
 )
 
 func Test_plugin_load(t *testing.T) {

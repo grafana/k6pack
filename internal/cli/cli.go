@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/grafana/k6pack"
 	"github.com/spf13/cobra"
-	"github.com/szkiba/k6pack"
 )
 
 const defaultTimeout = 30 * time.Second

@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 
 	"github.com/evanw/esbuild/pkg/api"
-	"github.com/szkiba/k6pack/internal/plugins/http"
-	"github.com/szkiba/k6pack/internal/plugins/k6"
+	"github.com/grafana/k6pack/internal/plugins/http"
+	"github.com/grafana/k6pack/internal/plugins/k6"
 )
 
 // Imports returns k6 imports from input script.

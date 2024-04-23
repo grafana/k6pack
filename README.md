@@ -1,9 +1,9 @@
-[![Go Reference](https://pkg.go.dev/badge/github.com/szkiba/k6pack.svg)](https://pkg.go.dev/github.com/szkiba/k6pack)
-[![GitHub Release](https://img.shields.io/github/v/release/szkiba/k6pack)](https://github.com/szkiba/k6pack/releases/)
-[![Go Report Card](https://goreportcard.com/badge/github.com/szkiba/k6pack)](https://goreportcard.com/report/github.com/szkiba/k6pack)
-[![GitHub Actions](https://github.com/szkiba/k6pack/actions/workflows/test.yml/badge.svg)](https://github.com/szkiba/k6pack/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/szkiba/k6pack/graph/badge.svg?token=krmjUlDGM5)](https://codecov.io/gh/szkiba/k6pack)
-![GitHub Downloads](https://img.shields.io/github/downloads/szkiba/k6pack/total)
+[![Go Reference](https://pkg.go.dev/badge/github.com/grafana/k6pack.svg)](https://pkg.go.dev/github.com/grafana/k6pack)
+[![GitHub Release](https://img.shields.io/github/v/release/szkiba/k6pack)](https://github.com/grafana/k6pack/releases/)
+[![Go Report Card](https://goreportcard.com/badge/github.com/grafana/k6pack)](https://goreportcard.com/report/github.com/grafana/k6pack)
+[![GitHub Actions](https://github.com/grafana/k6pack/actions/workflows/test.yml/badge.svg)](https://github.com/grafana/k6pack/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/grafana/k6pack/graph/badge.svg?token=krmjUlDGM5)](https://codecov.io/gh/szkiba/k6pack)
+![GitHub Downloads](https://img.shields.io/github/downloads/grafana/k6pack/total)
 
 # k6pack
 
@@ -20,12 +20,12 @@ The main goal of **k6pack** is to make TypeScript and modern JavaScript features
 
 ## Install
 
-Precompiled binaries can be downloaded and installed from the [Releases](https://github.com/szkiba/k6pack/releases) page.
+Precompiled binaries can be downloaded and installed from the [Releases](https://github.com/grafana/k6pack/releases) page.
 
 If you have a go development environment, the installation can also be done with the following command:
 
 ```
-go install github.com/szkiba/k6pack/cmd/k6pack@latest
+go install github.com/grafana/k6pack/cmd/k6pack@latest
 ```
 
 ## Usage
@@ -104,7 +104,7 @@ If sourcemap is enabled, by default, the current directory will be set in the so
 
 Under the hood, k6pack uses the [esbuild](https://github.com/evanw/esbuild) library. A special esbuild plugin contains k6 specific configuration and another esbuild plugin implements loading from http/https URL.
 
-k6pack can also be used as a [go library](https://pkg.go.dev/github.com/szkiba/k6pack).
+k6pack can also be used as a [go library](https://pkg.go.dev/github.com/grafana/k6pack).
 
 ## Development
 

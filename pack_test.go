@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/grafana/k6pack"
 	"github.com/stretchr/testify/require"
-	"github.com/szkiba/k6pack"
 )
 
 func Test_Pack_error(t *testing.T) {
