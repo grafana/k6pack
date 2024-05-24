@@ -25,7 +25,7 @@ var reExtension = regexp.MustCompile(filterExtension)
 
 // Metadata holds k6 related metadata, emitted under "k6" key of Metafile.
 type Metadata struct {
-	// Imports contains a list of k6 imports.
+	// Imports contains a list of k6 imports (core modules and extensions).
 	Imports []string `json:"imports,omitempty"`
 }
 
