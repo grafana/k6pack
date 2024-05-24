@@ -37,7 +37,7 @@ func Test_formatError(t *testing.T) {
 
 	require.True(t, strings.Contains(str, "[ERROR] unsupported operation\n\n"))
 
-	_, err := k6pack.Imports(`import "foo"`, &k6pack.Options{})
+	_, _, err := k6pack.Pack(`import "foo"`, &k6pack.Options{})
 	require.Error(t, err)
 
 	str = formatError(err)

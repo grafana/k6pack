@@ -1,5 +1,5 @@
-// Package cli contains CLI command for k6pack.
-package cli
+// Package cmd contains cobra command for k6pack.
+package cmd
 
 import (
 	"io"
@@ -13,7 +13,7 @@ import (
 
 const defaultTimeout = 30 * time.Second
 
-// New creates new cobra command for k6pack command.
+// New creates new cobra command for "pack" command.
 func New() *cobra.Command {
 	opts := new(k6pack.Options)
 
@@ -74,7 +74,7 @@ func pack(filename string, opts *k6pack.Options, out io.Writer) error {
 		return err
 	}
 
-	script, err := k6pack.Pack(string(contents), opts)
+	script, _, err := k6pack.Pack(string(contents), opts)
 	if err != nil {
 		return err
 	}

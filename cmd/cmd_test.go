@@ -1,4 +1,4 @@
-package cli_test
+package cmd_test
 
 import (
 	"io"
@@ -6,14 +6,14 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/grafana/k6pack/internal/cli"
+	"github.com/grafana/k6pack/cmd"
 	"github.com/stretchr/testify/require"
 )
 
 func Test_New_stdout(t *testing.T) {
 	t.Parallel()
 
-	cmd := cli.New()
+	cmd := cmd.New()
 
 	args := []string{filepath.Join("testdata", "simple.ts")}
 
@@ -28,7 +28,7 @@ func Test_New_stdout(t *testing.T) {
 func Test_New_file(t *testing.T) {
 	t.Parallel()
 
-	cmd := cli.New()
+	cmd := cmd.New()
 
 	filename := filepath.Join(t.TempDir(), "out.js")
 
@@ -48,7 +48,7 @@ func Test_New_file(t *testing.T) {
 func Test_New_file_error(t *testing.T) {
 	t.Parallel()
 
-	cmd := cli.New()
+	cmd := cmd.New()
 
 	args := []string{"-o", filepath.Join("no_such_dir", "no_such_subdir", "file.js"), filepath.Join("testdata", "simple.ts")}
 
