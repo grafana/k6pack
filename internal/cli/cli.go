@@ -74,7 +74,7 @@ func pack(filename string, opts *k6pack.Options, out io.Writer) error {
 		return err
 	}
 
-	script, err := k6pack.Pack(string(contents), opts)
+	script, _, err := k6pack.Pack(string(contents), opts)
 	if err != nil {
 		return err
 	}
