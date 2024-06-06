@@ -44,7 +44,7 @@ func Test_plugin_onResolve_error(t *testing.T) {
 
 	plugin := new(plugin)
 
-	plugin.resolve = func(path string, options api.ResolveOptions) api.ResolveResult {
+	plugin.resolve = func(_ string, _ api.ResolveOptions) api.ResolveResult {
 		return api.ResolveResult{}
 	}
 
