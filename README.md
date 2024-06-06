@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/grafana/k6pack/graph/badge.svg?token=krmjUlDGM5)](https://codecov.io/gh/grafana/k6pack)
 ![GitHub Downloads](https://img.shields.io/github/downloads/grafana/k6pack/total)
 
-# k6pack
+<h1 name="title">k6pack</h1>
 
 **TypeScript transpiler and module bundler for k6**
 
@@ -78,27 +78,40 @@ export { User, newUser };
 
 </details>
 
+## CLI Reference
+
+<!-- #region cli -->
+## k6pack
+
+TypeScript transpiler and module bundler for k6.
+
+### Synopsis
+
+Bundle TypeScript/JavaScript sources into a single k6 test script.
+
+**sourcemap**
+
+Sourcemap is disabled by default. If sourcemap is enabled, the current directory will be set in the sourcemap as the source root directory. This can be changed by using the `--source-root` flag. You can even disable the source root setting by specifying the empty string.
+
+
+```
+k6pack [flags] filename
+```
+
 ### Flags
 
 ```
-Usage:
-  k6pack [flags] filename
-
-Flags:
       --external stringArray   exclude module(s) from the bundle
   -h, --help                   help for k6pack
       --minify                 minify the output
   -o, --output string          write output to file (default stdout)
-      --source-root string     sets the sourceRoot field in generated source maps
+      --source-root string     sets the sourceRoot field in generated source maps (default "/home/iszkiba/work/toolbox/k6pack")
       --sourcemap              emit the source map with an inline data URL
       --timeout duration       HTTP timeout for remote modules (default 30s)
       --typescript             force TypeScript loader
-  -v, --version                version for k6pack
 ```
 
-**sourcemap**
-
-If sourcemap is enabled, by default, the current directory will be set in the sourcemap as the source root directory. This can be changed by using the `--source-root` flag. You can even disable the source root setting by specifying the empty string.
+<!-- #endregion cli -->
 
 ## How It Works
 
@@ -113,6 +126,14 @@ k6pack can also be used as a [go library](https://pkg.go.dev/github.com/grafana/
 This section contains a description of the tasks performed during development. If you have the [xc (Markdown defined task runner)](https://github.com/joerdav/xc) command-line tool, individual tasks can be executed simply by using the `xc task-name` command.
 
 <details><summary>Click to expand</summary>
+
+#### readme
+
+Update documentation in README.md.
+
+```
+go run ./tools/gendoc README.md
+```
 
 #### lint
 
@@ -174,11 +195,5 @@ Delete the build directory.
 ```
 rm -rf build
 ```
-
-#### all
-
-Run all tasks.
-
-Requires: lint,test,build,snapshot,examples
 
 </details>

@@ -27,6 +27,6 @@ jobs:
       - name: Go linter
         uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.55
+          version: v1.57
           args: --timeout=30m
           install-mode: binary

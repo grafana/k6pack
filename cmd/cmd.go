@@ -2,6 +2,7 @@
 package cmd
 
 import (
+	_ "embed"
 	"io"
 	"os"
 	"path/filepath"
@@ -13,6 +14,9 @@ import (
 
 const defaultTimeout = 30 * time.Second
 
+//go:embed help.md
+var help string
+
 // New creates new cobra command for "pack" command.
 func New() *cobra.Command {
 	opts := new(k6pack.Options)
@@ -22,9 +26,9 @@ func New() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "pack [flags] filename",
 		Short: "TypeScript transpiler and module bundler for k6.",
-		Long:  "Bundle TypeScript/JavaScript sources into a single k6 test script.",
+		Long:  help,
 		Args:  cobra.ExactArgs(1),
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(_ *cobra.Command, args []string) error {
 			var out io.Writer
 
 			if len(output) == 0 {
