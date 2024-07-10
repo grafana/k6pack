@@ -17,14 +17,14 @@ const defaultTimeout = 30 * time.Second
 //go:embed help.md
 var help string
 
-// New creates new cobra command for "pack" command.
+// New creates new cobra command for "k6pack" command.
 func New() *cobra.Command {
 	opts := new(k6pack.Options)
 
 	var output string
 
 	cmd := &cobra.Command{
-		Use:   "pack [flags] filename",
+		Use:   "k6pack [flags] filename",
 		Short: "TypeScript transpiler and module bundler for k6.",
 		Long:  help,
 		Args:  cobra.ExactArgs(1),
