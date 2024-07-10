@@ -4,7 +4,6 @@ package main
 import (
 	"log"
 	"os"
-	"strings"
 
 	"github.com/grafana/k6pack/cmd"
 	"github.com/spf13/cobra"
@@ -22,7 +21,6 @@ func main() {
 
 func newCmd(args []string) *cobra.Command {
 	cmd := cmd.New()
-	cmd.Use = strings.Replace(cmd.Use, cmd.Name(), appname, 1)
 	cmd.Version = version
 	cmd.SetArgs(args)
 

@@ -1,4 +1,5 @@
 project_name: k6pack
+version: 2
 before:
   hooks:
     - go mod tidy
@@ -9,7 +10,7 @@ builds:
     goos: ["darwin", "linux", "windows"]
     goarch: ["amd64", "arm64"]
     ldflags:
-      - '-s -w -X main.version={{.Version}} -X main.appname={{.ProjectName}}'
+      - "-s -w -X main.version={{.Version}} -X main.appname={{.ProjectName}}"
     dir: cmd/k6pack
 source:
   enabled: true
