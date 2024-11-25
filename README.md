@@ -166,7 +166,7 @@ Build the executable binary.
 This is the easiest way to create an executable binary (although the release process uses the goreleaser tool to create release versions).
 
 ```
-go build -ldflags="-w -s" -o build/k6pack .
+go build -ldflags="-w -s" -o build/k6pack ./cmd/k6pack
 ```
 
 #### snapshot

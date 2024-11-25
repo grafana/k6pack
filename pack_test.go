@@ -1,7 +1,6 @@
 package k6pack_test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/grafana/k6pack"
@@ -28,19 +27,13 @@ const user : User = newUser("John")
 console.log(user)
 `, &k6pack.Options{TypeScript: true})
 
-	fmt.Println(string(src))
-
 	require.NoError(t, err)
 
-	exp := /*js*/ `var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-
-// examples/user.ts
+	exp := /*js*/ `// examples/user.ts
 var UserAccount = class {
+  name;
+  id;
   constructor(name) {
-    __publicField(this, "name");
-    __publicField(this, "id");
     this.name = name;
     this.id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
   }
