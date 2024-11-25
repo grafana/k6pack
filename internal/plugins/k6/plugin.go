@@ -59,11 +59,11 @@ func setOptions(opts *api.BuildOptions) {
 	}
 
 	if opts.Target == api.DefaultTarget {
-		opts.Target = api.ES2017
+		opts.Target = api.ESNext
 	}
 
 	if opts.Format == api.FormatDefault {
-		opts.Format = api.FormatCommonJS
+		opts.Format = api.FormatESModule
 	}
 
 	if opts.LegalComments == api.LegalCommentsDefault {
