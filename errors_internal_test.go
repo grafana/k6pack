@@ -32,7 +32,7 @@ func Test_wrapError(t *testing.T) {
 
 	err := wrapError(errors.ErrUnsupported)
 
-	var perr PackError
+	var perr *packError
 
 	require.True(t, errors.As(err, &perr))
 
@@ -61,5 +61,9 @@ func Test_packError_Format(t *testing.T) {
 
 	err := wrapError(errors.ErrUnsupported)
 
-	require.True(t, strings.HasSuffix(err.Format(80, false), "[ERROR] unsupported operation\n\n"))
+	var perr *packError
+
+	require.True(t, errors.As(err, &perr))
+
+	require.True(t, strings.HasSuffix(perr.Format(80, false), "[ERROR] unsupported operation\n\n"))
 }

@@ -44,6 +44,15 @@ func New() *cobra.Command {
 				out = file
 			}
 
+			if opts.SourceRoot == "." {
+				abs, err := filepath.Abs(opts.SourceRoot)
+				if err != nil {
+					return err
+				}
+
+				opts.SourceRoot = abs
+			}
+
 			return pack(args[0], opts, out)
 		},
 		SilenceUsage:  true,
@@ -52,11 +61,9 @@ func New() *cobra.Command {
 
 	flags := cmd.Flags()
 
-	cwd, _ := os.Getwd() //nolint:forbidigo
-
 	flags.BoolVar(&opts.TypeScript, "typescript", false, "force TypeScript loader")
 	flags.BoolVar(&opts.SourceMap, "sourcemap", false, "emit the source map with an inline data URL")
-	flags.StringVar(&opts.SourceRoot, "source-root", cwd, "sets the sourceRoot field in generated source maps")
+	flags.StringVar(&opts.SourceRoot, "source-root", ".", "sets the sourceRoot field in generated source maps")
 	flags.BoolVar(&opts.Minify, "minify", false, "minify the output")
 	flags.DurationVar(&opts.Timeout, "timeout", defaultTimeout, "HTTP timeout for remote modules")
 	flags.StringVarP(&output, "output", "o", "", "write output to file (default stdout)")

@@ -105,7 +105,7 @@ k6pack [flags] filename
   -h, --help                   help for k6pack
       --minify                 minify the output
   -o, --output string          write output to file (default stdout)
-      --source-root string     sets the sourceRoot field in generated source maps (default "/home/iszkiba/work/toolbox/k6pack")
+      --source-root string     sets the sourceRoot field in generated source maps (default ".")
       --sourcemap              emit the source map with an inline data URL
       --timeout duration       HTTP timeout for remote modules (default 30s)
       --typescript             force TypeScript loader
@@ -119,81 +119,7 @@ Under the hood, k6pack uses the [esbuild](https://github.com/evanw/esbuild) libr
 
 k6pack can also be used as a [go library](https://pkg.go.dev/github.com/grafana/k6pack).
 
-## Development
+## Contribute
 
-### Tasks
-
-This section contains a description of the tasks performed during development. If you have the [xc (Markdown defined task runner)](https://github.com/joerdav/xc) command-line tool, individual tasks can be executed simply by using the `xc task-name` command.
-
-<details><summary>Click to expand</summary>
-
-#### readme
-
-Update documentation in README.md.
-
-```
-go run ./tools/gendoc README.md
-```
-
-#### lint
-
-Run the static analyzer.
-
-```
-golangci-lint run
-```
-
-#### test
-
-Run the tests.
-
-```
-go test -count 1 -race -coverprofile=build/coverage.txt ./...
-```
-
-#### coverage
-
-View the test coverage report.
-
-```
-go tool cover -html=build/coverage.txt
-```
-
-#### build
-
-Build the executable binary.
-
-This is the easiest way to create an executable binary (although the release process uses the goreleaser tool to create release versions).
-
-```
-go build -ldflags="-w -s" -o build/k6pack ./cmd/k6pack
-```
-
-#### snapshot
-
-Creating an executable binary with a snapshot version.
-
-The goreleaser command-line tool is used during the release process. During development, it is advisable to create binaries with the same tool from time to time.
-
-```
-goreleaser build --snapshot --clean --single-target -o build/k6pack
-```
-
-#### examples
-
-Run scripts from examples directory.
-
-```
-go run ./cmd/k6pack examples/script.ts | go run go.k6.io/k6@latest run -
-go run ./cmd/k6pack examples/simple.ts | go run go.k6.io/k6@latest run -
-```
-
-#### clean
-
-Delete the build directory.
-
-```
-rm -rf build
-```
-
-</details>
+If you want to contribute or help with the development of **k6pack**, start by 
+reading [CONTRIBUTING.md](CONTRIBUTING.md).

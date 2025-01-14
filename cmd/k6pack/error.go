@@ -6,14 +6,18 @@ import (
 	"strings"
 
 	"github.com/evanw/esbuild/pkg/api"
-	"github.com/grafana/k6pack"
 	"golang.org/x/term"
 )
+
+type formatableError = interface {
+	error
+	Format(width int, color bool) string
+}
 
 func formatError(err error) string {
 	width, color := formatOptions(int(os.Stderr.Fd())) //nolint:forbidigo
 
-	var perr k6pack.PackError
+	var perr formatableError
 	if errors.As(err, &perr) {
 		return perr.Format(width, color)
 	}

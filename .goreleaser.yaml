@@ -27,7 +27,7 @@ checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
 
 snapshot:
-  name_template: "{{ incpatch .Version }}-next+{{.ShortCommit}}{{if .IsGitDirty}}.dirty{{else}}{{end}}"
+  version_template: "{{ incpatch .Version }}-next+{{.ShortCommit}}{{if .IsGitDirty}}.dirty{{else}}{{end}}"
 
 changelog:
   sort: asc
