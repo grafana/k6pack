@@ -1,8 +1,8 @@
 module github.com/grafana/k6pack
 
-go 1.21
+go 1.22
 
-toolchain go1.21.13
+toolchain go1.22.10
 
 require (
 	github.com/evanw/esbuild v0.24.2
