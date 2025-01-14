@@ -7,17 +7,11 @@ import (
 	"github.com/evanw/esbuild/pkg/api"
 )
 
-// PackError is returned if any errors occur during transforming or bundling.
-type PackError = interface {
-	error
-	Format(width int, color bool) string
-}
-
 type packError struct {
 	messages []api.Message
 }
 
-func checkError(result *api.BuildResult) (bool, PackError) {
+func checkError(result *api.BuildResult) (bool, error) {
 	if len(result.Errors) == 0 {
 		return false, nil
 	}
@@ -25,7 +19,7 @@ func checkError(result *api.BuildResult) (bool, PackError) {
 	return true, &packError{messages: result.Errors}
 }
 
-func wrapError(err error) PackError {
+func wrapError(err error) error {
 	return &packError{[]api.Message{{Text: err.Error()}}}
 }
 
